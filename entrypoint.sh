@@ -13,8 +13,19 @@ readonly GO_MOD_DIRCTORY="${10}"
 readonly DEBUG="${11}"
 readonly DUPLICATE="${12}"
 readonly TIMEZONE="${13}"
+readonly GO_VERSION="${14}"
 
 readonly PR_TITLE_PREFIX="go mod tidy at "
+
+install_go()
+{
+    # from https://golang.org/doc/install#tarball
+    go_tar=go${GO_VERSION}.linux-amd64.tar.gz
+    wget https://dl.google.com/go/${go_tar}
+    tar -C /usr/local -xzf ${go_tar}
+    rm $go_tar
+}
+
 
 if [ -n "${DEBUG}" ]; then
   set -x
@@ -25,9 +36,10 @@ if [ -n "${TIMEZONE}" ]; then
   export TZ=$TIMEZONE
 fi
 
-export PATH="/go/bin:/usr/local/go/bin:$PATH"
-
 cd $GO_MOD_DIRCTORY
+
+install_go
+export PATH=$PATH:/usr/local/go/bin
 
 go mod tidy
 

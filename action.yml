@@ -60,7 +60,7 @@ inputs:
   go_version:
     description: Specify your Go version
     required: false
-    default: latest
+    default: 1.14.2
 
 runs:
   using: docker
@@ -79,5 +79,4 @@ runs:
     - ${{ inputs.debug }}
     - ${{ inputs.duplicate }}
     - ${{ inputs.timezone }}
-  with:
-    docker-build-args: "--build-arg go_version=${{inputs.go_version}}"
+    - ${{ inputs.go_version }}

@@ -1,8 +1,8 @@
-ARG go_version
-
-FROM golang:$go_version
+FROM ubuntu:19.10
 
 ENV HUB_VERSION 2.14.1
+
+RUN apt-get update && apt-get install -y wget git
 
 RUN wget --quiet https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz \
  && tar -xzf hub-linux-amd64-${HUB_VERSION}.tgz \
