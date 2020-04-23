@@ -57,6 +57,10 @@ inputs:
   timezone:
     description: Timezone to be used if set (e.g. `Asia/Tokyo`)
     required: false
+  go_version:
+    description: Specify your Go version
+    required: false
+    default: latest
 
 runs:
   using: docker
@@ -75,3 +79,5 @@ runs:
     - ${{ inputs.debug }}
     - ${{ inputs.duplicate }}
     - ${{ inputs.timezone }}
+  with:
+    docker-build-args: "--build-arg go_version=${{inputs.go_version}}"

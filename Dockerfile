@@ -1,4 +1,6 @@
-FROM golang
+ARG go_version
+
+FROM golang:$go_version
 
 ENV HUB_VERSION 2.14.1
 

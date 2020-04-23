@@ -81,6 +81,9 @@ jobs:
   * Whether create PullRequest even if it has already existed
 * `timezone`
   * Timezone to be used if set (e.g. `Asia/Tokyo`)
+* `go_version`
+  * Go version to be used if set (e.g. `1.14.2`).
+  * Default. `latest`
 
 ## CHANGELOG
 https://github.com/sue445/go-mod-tidy-pr/blob/master/CHANGELOG.md
